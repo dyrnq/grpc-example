@@ -2,18 +2,26 @@ package com.dyrnq;
 
 import com.dyrnq.grpc.BiDirectionalExampleService;
 import com.dyrnq.grpc.StreamServiceGrpc;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
+import io.grpc.*;
 import io.grpc.stub.StreamObserver;
+import picocli.CommandLine;
 
-import java.io.IOException;
 import java.util.UUID;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class GrpcExampleClient {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50053).usePlaintext().build();
+@CommandLine.Command(name = "client", aliases = {"c"}, description = "client")
+public class GrpcExampleClient implements Callable<Integer> {
+//    public static void main(String[] args) throws IOException, InterruptedException {
+
+    @CommandLine.Option(names = {"-s", "--server"}, description = "server",defaultValue = "127.0.0.1:50053")
+    String server;
+
+    @Override
+    public Integer call() throws Exception {
+        //ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50053).usePlaintext().build();
+        ManagedChannel channel = Grpc.newChannelBuilder(server, InsecureChannelCredentials.create()).build();
         StreamServiceGrpc.StreamServiceStub service = StreamServiceGrpc.newStub(channel);
         AtomicReference<StreamObserver<BiDirectionalExampleService.Request>> requestObserverRef = new AtomicReference<>();
 
@@ -50,5 +58,7 @@ public class GrpcExampleClient {
         observer.onNext(BiDirectionalExampleService.Request.getDefaultInstance());
         finishedLatch.await();
         observer.onCompleted();
+
+        return 0;
     }
 }

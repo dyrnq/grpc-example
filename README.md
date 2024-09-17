@@ -34,7 +34,7 @@ mvn clean package
 
 
 ```bash
-java -jar target/grpc-example-1.0-SNAPSHOT.jar
+java -jar target/grpc-example-1.0-SNAPSHOT.jar client --server 127.0.0.1:50053
 ```
 > client.log
 ```bash

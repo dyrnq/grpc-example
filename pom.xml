@@ -98,7 +98,7 @@
                                 <!-- 设置主类 -->
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.dyrnq.GrpcExampleClient</mainClass>
+                                    <mainClass>com.dyrnq.MainApp</mainClass>
                                 </transformer>
                                 <!-- 合并 META-INF/services 文件 -->
                                 <transformer
