@@ -1,0 +1,38 @@
+/* 
+Requires:
+
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+Build with:
+
+protoc \
+  --go_out=. \
+  --go_opt=paths=source_relative \
+  --go-grpc_out=. \
+  --go-grpc_opt=paths=source_relative \
+  *.proto
+*/
+
+syntax = "proto3";
+
+package stream;
+
+option go_package = "github.com/dyrnq/cobra-example/pkg/grpc/stream";
+option java_multiple_files = false;
+option java_package = "com.dyrnq.grpc";
+option java_outer_classname = "BiDirectionalExampleService";
+
+service StreamService {
+  rpc Channel (stream Request) returns (stream Response) {}
+}
+
+message Request {
+  //int32 id = 1;
+  string id = 1;
+  string name = 2;
+}
+
+message Response {
+  //string result = 1;
+  int32 total = 1;
+}
