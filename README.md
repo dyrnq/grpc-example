@@ -56,6 +56,16 @@ onNext from client3
 2024/09/17 19:34:42 id:"1" name:"3b20f039-08fb-467e-812a-0b22b7a6d3fc"
 ```
 
+> client tls
+```bash
+java -jar \
+target/grpc-example-1.0-SNAPSHOT.jar client \
+--server 127.0.0.1:50053 \
+--ca ../certs/ca.crt \
+--cert ../certs/client.crt \
+--key ../certs/client.key
+```
+
 ## ref
 
 - <https://github.com/dyrnq/cobra-example>
