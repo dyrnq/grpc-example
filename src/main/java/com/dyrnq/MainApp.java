@@ -5,7 +5,7 @@ import picocli.CommandLine;
 @CommandLine.Command(
         subcommands = {
                 GrpcExampleClient.class,
-
+                GrpcExampleServer.class,
         },
         version = "Sample 1.0",
         mixinStandardHelpOptions = true
