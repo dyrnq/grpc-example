@@ -13,7 +13,8 @@ archetype:generate \
 ## 名字比较奇怪,linux下也是以.exe结尾的
 ## wget https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.66.0/protoc-gen-grpc-java-1.66.0-linux-x86_64.exe
 
-curl -fSL -# -o /usr/local/bin/protoc-gen-grpc-java https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.66.0/protoc-gen-grpc-java-1.66.0-linux-x86_64.exe
+ver=1.69.0
+curl -fSL -# -o /usr/local/bin/protoc-gen-grpc-java https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${ver}/protoc-gen-grpc-java-${ver}-linux-x86_64.exe
 chmod +x /usr/local/bin/protoc-gen-grpc-java
 ```
 
