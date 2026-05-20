@@ -11,7 +11,7 @@
 
     <properties>
         <protobuf.version>4.34.1</protobuf.version>
-        <grpc.version>1.80.0</grpc.version>
+        <grpc.version>1.81.0</grpc.version>
         <maven.compiler.source>21</maven.compiler.source> <!-- 或者使用 8 -->
         <maven.compiler.target>21</maven.compiler.target> <!-- 或者使用 8 -->
     </properties>
